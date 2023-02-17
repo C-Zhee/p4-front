@@ -1,0 +1,5 @@
+body {
+    background-color: lightblue;
+    background-image: url('./assets/bg.svg');
+    background-repeat: repeat-y;
+}

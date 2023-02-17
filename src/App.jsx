@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react'
 import SneakerCard from "./SneakerCard"
 import Favorite from "./Favorite"
 import Login from "./Login"
+import Signup from './Signup'
+import Card from './Card'
+import Post from './Post'
 
 const App = () => {
   const [sneakers, setSneakers] = useState([])
@@ -18,13 +21,13 @@ const App = () => {
     request()
   }, [] )
 
-  const addSneaker = (movie) => {
-    if (favorite.includes(movie)) return;
-    setFavorite([...favorite, movie])
+  const addSneaker = (sneaker) => {
+    if (favorite.includes(sneaker)) return;
+    setFavorite([...favorite, sneaker])
   }
 
-  const deleteSneaker = (movie) => {
-    setFavorite(favorite.filter(x => x !== movie))
+  const deleteSneaker = (sneaker) => {
+    setFavorite(favorite.filter(x => x !== sneaker))
   }
 
   // const handleSignUp = () => {
@@ -58,17 +61,26 @@ const App = () => {
       element: < Login />
     },
     {
+      path: '/signup',
+      element: < Signup />
+    },
+    {
       path: '/sneakercard',
       element: < SneakerCard sneakers={sneakers} addSneaker={addSneaker} />
     },
     {
-      path: '/favorite',
+      path: '/card',
+      element: < Card />
+    },
+    {
+      path: '/favorites',
       element: < Favorite favorite={favorite} deleteSneaker={deleteSneaker} />
     }
-    // ,
-    // {
-    // maybe add another route in here! :]
-    // }
+    ,
+    {
+      path: '/post',
+      element: < Post />
+    }
   ])
 
 

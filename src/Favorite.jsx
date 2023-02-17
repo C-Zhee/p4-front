@@ -1,18 +1,31 @@
+import { React, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import CardTwo from './CardTwo'
 
 
-const Favorite = ({ favorite, deleteSneaker }) => {
+const Favorite = () => {
     const navigate = useNavigate()
+    const [favorites, setFavorites] = useState([])
+    console.log(favorites)
+
+    useEffect(() => {
+        let request = async () => {
+            let req = await fetch(`http://localhost:3000/favoritesU/7`)
+            let res = await req.json()
+            setFavorites(res)
+        }
+        request()
+    }, [])
     
-    return (
-        <div >
-            <button className="button-4" onClick={() => navigate('/sneakercard')}>Sneaker Card</button>
+    return (    
+        <div>
+            <button className="button-4" type="button" onClick={() => navigate('/sneakercard')}>Sneaker Card</button>
+            <h1>Favorites</h1>
             {
-                favorite.map((sneaker) => {
-                    return (
-                        <div onClick={() => { deleteSneaker(sneaker) }}>
-                            <img width="250px" height="300px" grid-template-columns="auto auto auto auto auto auto" src={sneaker.image} />
-                            <p>{sneaker.name}</p>
+                favorites.map((fav)=> {
+                    return(
+                        <div>
+                            <CardTwo fav={fav} />
                         </div>
                     )
                 })
@@ -22,3 +35,5 @@ const Favorite = ({ favorite, deleteSneaker }) => {
 }
 
 export default Favorite;
+
+
