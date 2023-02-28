@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 
-const CardTwo = ({ fav }) => {
+const CardTwo = ({ fav,deleteSneaker }) => {
     console.log(fav)
     const [sneaker, setSneaker] = useState(fav)
     const sneakerID = fav.id
@@ -23,7 +23,6 @@ const CardTwo = ({ fav }) => {
             </div>
             <div style={{ display: 'flex' }}>
                 <div style={{ flex: '50%' }}>
-                    <Button variant="contained" onClick={notfavorite}>REMOVE</Button>
                 </div>
             </div>
         </div>

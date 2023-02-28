@@ -14,7 +14,8 @@ const Login = () => {
                 <h1>Log in</h1>
                 <TextField id="outlined-basic" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)}/><br />
                 <TextField id="outlined-basic" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} /><br />
-                <button className="button-4" type="button">Login</button>
+                {/* <button className="button-4" type="button">Login</button> */}
+                <button className="button-4" type="button" onClick={() => navigate('/sneakercard')}>Login</button>
                 <h3>Dont have an account yet? <Link to='/signup'>Sign up</Link></h3>
             </form>
         </div>
